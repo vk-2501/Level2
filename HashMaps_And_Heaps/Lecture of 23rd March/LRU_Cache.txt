@@ -1,0 +1,94 @@
+class LRUCache {
+
+    public class Node{
+        int data;
+        int key;
+        Node next;
+        Node prev;
+    }
+
+    Node head;
+    Node tail;
+    int size;
+    int capacity;
+
+    HashMap<Integer,Node> hm=new HashMap<>();
+    public LRUCache(int capacity) {
+         this.capacity=capacity;
+    }
+        public void remove(Node node){
+        if(size==1){
+            head=tail=null;
+        }
+        else if(node==head){
+            head=head.next;
+            head.prev=null;
+        }
+        else if(node==tail){
+            tail=tail.prev;
+            tail.next=null;
+        }
+        else{
+            Node nm1=node.prev;
+            Node nm2=node.next;
+            nm1.next=nm2;
+            nm2.prev=nm1;
+        }
+        size--;
+    }
+
+    public void addFront(int key,int val){
+        Node node=new Node();
+        node.data=val;
+        node.key=key;
+        if(size==0){
+         head=tail=node;
+        }
+        else{
+            head.prev=node;
+            node.next=head;
+            head=node;
+        }
+        size++;
+    }
+    
+    public int get(int key) {
+        if(hm.containsKey(key)){
+             Node node=hm.get(key);
+            remove(node);
+            addFront(key,node.data);
+            hm.put(key,head);
+            return node.data;
+        }
+        else{
+            return -1;
+        }
+    }
+    
+    public void put(int key, int value) {
+               if(hm.containsKey(key)){
+            Node node=hm.get(key);
+
+            //update the value
+            node.data=value;
+
+            //make it as head because it is recently used
+            remove(node);
+            addFront(key,value);
+            hm.put(key,head);
+        }
+        else{
+            if(size==capacity){
+                hm.remove(tail.key);
+                remove(tail);
+                addFront(key,value);
+                hm.put(key,head);
+            }
+            else{
+                addFront(key,value);
+                hm.put(key,head);
+            }
+        }
+    }
+}
+
