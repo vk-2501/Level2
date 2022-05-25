@@ -1,0 +1,51 @@
+	public TreeNode inorderSuccessor(TreeNode root,TreeNode x){
+         TreeNode curr=root;
+         TreeNode succ=null;
+         boolean found=false;
+        while(curr!=null){
+            if(curr.left==null){
+                //print
+                if(found==true){
+                    succ=curr;
+                    break;
+                }
+
+                if(curr.val==x.val){
+                    found=true;
+                }
+                
+                curr=curr.right;
+            }
+            
+            else{
+                TreeNode iop=curr.left;
+                while(iop.right!=null && iop.right!=curr){
+                    iop=iop.right;
+                }
+                
+                if(iop.right==null){
+                    //make a thread
+                    // move to left
+                    iop.right=curr;
+                    curr=curr.left;
+                }
+                else{
+                    iop.right=null;
+                   //print
+                        if(found==true){
+                    succ=curr;
+                    break;
+                }
+
+                if(curr.val==x.val){
+                    found=true;
+                }
+                
+                curr=curr.right;
+            }
+                    curr=curr.right;
+                }
+            }
+        }
+        return al;
+    }

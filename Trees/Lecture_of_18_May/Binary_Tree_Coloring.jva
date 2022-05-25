@@ -1,0 +1,27 @@
+class Solution {
+    int left=0;
+    int right=0;
+    public int size(TreeNode root,int x){
+        
+        if(root==null)return 0;
+        
+        int ls=size(root.left,x);
+        int rs=size(root.right,x);
+        if(root.val==x){
+            left=ls;
+            right=rs;
+        }
+        
+        return ls+rs+1;
+    }
+    public boolean btreeGameWinningMove(TreeNode root, int n, int x) {
+      int tot=size(root,x);
+        int totalOnOther=tot-(left+right+1);
+        int maxof=Math.max(totalOnOther,Math.max(left,right));
+        int rest=n-maxof;
+        if(maxof>rest)
+            return true;
+        else
+            return false;
+    }
+}
