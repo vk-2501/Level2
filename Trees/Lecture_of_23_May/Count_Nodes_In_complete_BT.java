@@ -16,7 +16,7 @@ public class Sol{
         while(node!=null){
             node=node.right;
             rh++;
-        }
+        } 
 
         if(lh==rh){
             int ht=lh+1;

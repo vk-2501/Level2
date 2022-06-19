@@ -1,0 +1,30 @@
+class GFG
+{
+     static int idx=0;
+    public static Node constructTree(int post[],int n)
+    {
+        idx=post.length-1;
+        return helper(post,Integer.MIN_VALUE,Integer.MAX_VALUE);
+        
+    }
+    
+    
+       public static Node helper(int[] post,int min,int max){
+        if(idx==-1)
+            return null;
+        else if(post[idx]>min && post[idx]<max){
+            Node node=new Node(post[idx]);
+          
+            idx--;
+
+            node.right=helper(post,node.data,max);
+            node.left=helper(post,min,node.data);
+           
+            return node;
+        }
+        else{
+            return null;
+        }
+    
+    }
+}
