@@ -29,4 +29,23 @@ public class Closest_Sum {
         }
     }
 }
+// --------------------------------------without static----------------------------------------
+
+        static int minDiff(Node  root, int K) 
+        { 
+            // minD=Integer.MAX_VALUE;
+            // helper(root,K);
+            // return minD;
+            if(root==null){
+                return Integer.MAX_VALUE;
+            }
+
+            int l=minDiff(root.left,K);
+            int r=minDiff(root.right,K);
+            int diff=Math.abs(root.data-K);
+
+            return Math.min(diff,Math.min(l,r));
+
+            
+        }
 }

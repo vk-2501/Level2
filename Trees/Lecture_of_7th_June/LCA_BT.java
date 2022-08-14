@@ -28,7 +28,7 @@ public class LCA_BT {
 
         if(root.data==n1){
             f1=true;
-            return root;
+            return root; 
         }
         else if(root.data==n2){
             f2=true;

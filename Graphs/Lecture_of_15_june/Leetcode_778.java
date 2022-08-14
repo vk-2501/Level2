@@ -7,7 +7,7 @@ class Solution {
        int j;
        int w;
 
-       pair(int src, int j, int w) {
+       pair(int i, int j, int w) {
            this.i = i;
            this.j = j;
            this.w = w;

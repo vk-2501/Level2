@@ -112,12 +112,12 @@ class Solution {
             int t=0;
             while(q.size()>0){
                 //remove mark* work add*
-                
                 Pair rem=q.remove();
-                
+               
                 if(visited[rem.x][rem.y]==true){
                     continue;
                 }
+                
                 
                 visited[rem.x][rem.y]=true;
                 

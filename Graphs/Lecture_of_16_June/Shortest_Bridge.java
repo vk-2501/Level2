@@ -12,6 +12,8 @@ class Solution {
     }
     public int shortestBridge(int[][] grid) {
         ArrayDeque<Pair> q=new ArrayDeque<>();
+
+        //1 ke ek component mai ghum lo
         boolean[][] vis1=new boolean[grid.length][grid[0].length];
         boolean found=false;
         for(int i=0;i<grid.length;i++){
@@ -25,6 +27,11 @@ class Solution {
             if(found)
                 break;
         }
+
+        //bfs chalao now you have all elements in queue of component where 1 was found. Now start bfs from this and keep adding
+        //elements in queue except the already explored ones (which are already presnt in queue). Now when you will find the first one 
+        //that means it is the shortest distance to be established as a bridge so return level-1 in that case.
+        
         
         int dist=-1;
         boolean[][] vis2=new boolean[grid.length][grid[0].length];

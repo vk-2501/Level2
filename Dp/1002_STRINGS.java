@@ -8,7 +8,7 @@ class 1002_STRINGS{
         if(idx==s.length())
         return 1;
 
-        char ch1=s.charAt(i);
+        char ch1=s.charAt(idx);
         if(ch1=='0')
         return 0;
 
