@@ -9,7 +9,7 @@ public class ifGraphBip {
             for(int v=0;v<graph.length;v++){
                 if(visited[v]==0){
                 boolean isbip=helper(graph,visited,v);
-                if(isbip==false){
+                if(isbip==false){                        
                     return false;
                 }
                 }

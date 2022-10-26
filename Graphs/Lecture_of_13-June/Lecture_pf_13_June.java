@@ -99,7 +99,7 @@ class Solution {
             Queue<Pair> q=new ArrayDeque<>();
             for(int x=0;x<grid.length;x++){
                 for(int y=0;y<grid[0].length;y++){
-                    if(grid[x][y]==2)//rotten ornage
+                    if(grid[x][y]==2)//rotten orange
                     {
                         q.add(new Pair(x,y,0));
                     }
